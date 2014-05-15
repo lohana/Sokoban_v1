@@ -2,21 +2,29 @@ package sokoban;
 
 // Class representing a figure Board for the Sokoban game.
 public class Board extends Figure{
+	
+	private Figure[][] figures;
+	private Player player;
 
-	public Board(Position position, SokobanViewer viewer) {
-		super(position, viewer);
-		// TODO Auto-generated constructor stub
+	public Board(Position position) {
+		super(position);
 	}
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
+	public void move(Directions direction) {
 		
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+	
+	public Figure getFigure(Position position) {
+		return figures[position.getX()][position.getY()];
 	}
 }

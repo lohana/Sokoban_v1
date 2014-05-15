@@ -2,22 +2,25 @@ package sokoban;
 
 //Class representing a figure Empty field for the Sokoban game.
 public class Field extends Figure {
+	
+	private boolean isFinal;
 
-	public Field(Position position, SokobanViewer viewer) {
-		super(position, viewer);
-		// TODO Auto-generated constructor stub
+	public Field(Position position) {
+		super(position);
+		this.isFinal = false;
 	}
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
-		
+		if (isFinal) {
+			
+		} else {
+			
+		}
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		
+	public void move(Directions direction) {
+		return;
 	}
-
 }

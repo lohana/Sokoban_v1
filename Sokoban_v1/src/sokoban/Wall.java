@@ -3,18 +3,17 @@ package sokoban;
 // Class representing a figure Wall for the Sokoban game.
 public class Wall extends Figure {
 
-	public Wall(Position position, SokobanViewer viewer) {
-		super(position, viewer);
+	public Wall(Position position) {
+		super(position);
 	}
 
 	@Override
 	public void draw() {
-		viewer.drawWall(position);
+		
 	}
 
 	@Override
-	public void move() {
+	public void move(Directions direction) {
 		return;
 	}
-
 }

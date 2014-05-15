@@ -3,20 +3,17 @@ package sokoban;
 // Class representing a figure Player for the Sokoban game.
 public class Player extends Figure {
 
-	public Player(Position position, SokobanViewer viewer) {
-		super(position, viewer);
-		// TODO Auto-generated constructor stub
+	public Player(Position position) {
+		super(position);
 	}
 
 	@Override
 	public void draw() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void move() {
-		// TODO Auto-generated method stub
+	public void move(Directions direction) {
 		
 	}
 	

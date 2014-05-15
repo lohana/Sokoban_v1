@@ -8,10 +8,8 @@ import javax.swing.*;
 public class Main {
 	public static void main(String args[]) throws IOException
 	{
-		GUI gui = new GUI();
-		gui.setImage(1, 2, Figures.Field);
-		gui.setImage(3, 2, Figures.Player);
-		GUISokobanViewer viewer = new GUISokobanViewer(gui);
+		SokobanDrawer drawer = SokobanDrawer.getInstance();
+		drawer.drawToSceen(new Position(1,2), Figures.Player);
 		//viewer.drawWall(new Position());
 		
 	}
