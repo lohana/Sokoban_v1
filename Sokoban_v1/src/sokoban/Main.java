@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String args[]) throws IOException
 	{
 		SokobanDrawer drawer = SokobanDrawer.getInstance();
-		drawer.drawToSceen(new Position(1,2), Figures.Player);
+		//drawer.drawToSceen(new Position(1,2), Figures.Player);
 		//viewer.drawWall(new Position());
 		
 	}

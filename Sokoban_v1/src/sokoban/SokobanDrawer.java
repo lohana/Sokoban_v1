@@ -26,6 +26,7 @@ public class SokobanDrawer {
 	private BufferedImage player;
 	private BufferedImage box;
 	private BufferedImage finalBox;
+	private Game game;
 	 
     // private constructor
     private SokobanDrawer() {
@@ -49,15 +50,37 @@ public class SokobanDrawer {
 			e.printStackTrace();
 		}
 
+		Game game = new Game(rows, cols);
+		Collision collision = Collision.getInstance();
+		Board board = collision.getBoard();
+		BufferedImage currentIcon = null;
+		
+		
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++) {
 				JLabel label = new JLabel();
 				label.setSize(ImageSize, ImageSize);
-				ImageIcon icon = new ImageIcon(wall);
+				Figure currentFigure = board.getFigure(new Position(i,j));
+				if (currentFigure instanceof Field){
+					if (((Field) currentFigure).isFinal())
+						currentIcon = finalField;
+					else
+						currentIcon = field;
+				} else if (currentFigure instanceof Wall)
+					currentIcon = wall;
+				else if (currentFigure instanceof Player)
+					currentIcon = player;
+				else if (currentFigure instanceof Box)
+					currentIcon = box;
+				else
+					currentIcon = wall;
+				
+				ImageIcon icon = new ImageIcon(currentIcon);
 				icon.setImage(icon.getImage());
 				label.setIcon(icon);
 				label.setBounds(i * ImageSize, j * ImageSize, i * ImageSize + ImageSize, j * ImageSize + ImageSize);
 				this.window.getContentPane().add(label);
+				
 			}
 		}
 
@@ -67,6 +90,14 @@ public class SokobanDrawer {
     public static SokobanDrawer getInstance() {
         return instance;
     }
+    
+    public int getRows(){
+    	return rows;
+    }
+    
+    public int getCols(){
+    	return cols;
+    } 
 
 	public void drawToSceen(Position position, Figures figure) {
 		JLabel label = (JLabel)this.window.getContentPane().getComponent(position.getX() * cols + position.getY());

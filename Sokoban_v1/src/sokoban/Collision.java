@@ -2,10 +2,26 @@ package sokoban;
 
 public class Collision {
 	
+	private static volatile Collision instance = null;
 	private Board board;
 	
-	public Collision(Board board) {
+	private  Collision() {
+		
+	}
+	
+	public static Collision getInstance() {
+	      if(instance == null) {
+	         instance = new Collision();
+	      }
+	      return instance;
+	}
+	
+	public void setBoard(Board board){
 		this.board = board;
+	}
+	
+	public Board getBoard(){
+		return board;
 	}
 	
 	// Checks if the player can move in the specified direction

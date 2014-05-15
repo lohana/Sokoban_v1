@@ -5,9 +5,9 @@ public class Field extends Figure {
 	
 	private boolean isFinal;
 
-	public Field(Position position) {
+	public Field(Position position, boolean isFinal) {
 		super(position);
-		this.isFinal = false;
+		this.isFinal = isFinal;
 	}
 
 	@Override
@@ -22,5 +22,9 @@ public class Field extends Figure {
 	@Override
 	public void move(Directions direction) {
 		return;
+	}
+	
+	public boolean isFinal(){
+		return isFinal;
 	}
 }

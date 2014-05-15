@@ -6,8 +6,9 @@ public class Board extends Figure{
 	private Figure[][] figures;
 	private Player player;
 
-	public Board(Position position) {
+	public Board(Position position, int rows, int cols) {
 		super(position);
+		figures = new Figure[rows][cols];
 	}
 
 	@Override
@@ -26,5 +27,11 @@ public class Board extends Figure{
 	
 	public Figure getFigure(Position position) {
 		return figures[position.getX()][position.getY()];
+	}
+	
+	
+	public void setFigure(Figure figure){
+		
+		figures[figure.position.getX()][figure.position.getY()] = figure;
 	}
 }
