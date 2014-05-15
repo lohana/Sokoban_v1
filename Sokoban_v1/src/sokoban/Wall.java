@@ -9,7 +9,8 @@ public class Wall extends Figure {
 
 	@Override
 	public void draw() {
-		
+		SokobanDrawer drawer = SokobanDrawer.getInstance();
+		drawer.drawToSceen(this.position, Figures.Wall);
 	}
 
 	@Override

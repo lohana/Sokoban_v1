@@ -9,13 +9,23 @@ public class Field extends Figure {
 		super(position);
 		this.isFinal = false;
 	}
+	
+	public Field(Position position, boolean isFinal) {
+		super(position);
+		this.isFinal = isFinal;
+	}
+	
+	public boolean isFinal(){
+		return isFinal;
+	}
 
 	@Override
 	public void draw() {
+		SokobanDrawer drawer = SokobanDrawer.getInstance();
 		if (isFinal) {
-			
+			drawer.drawToSceen(this.position, Figures.FinalField);
 		} else {
-			
+			drawer.drawToSceen(this.position, Figures.Field);
 		}
 	}
 
