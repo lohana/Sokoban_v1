@@ -50,13 +50,13 @@ public class Position {
 	public Position getNextPosition(Directions direction) {
 		switch (direction) {
 			case Up:
-				return new Position(x - 1, y);
-			case Down:
-				return new Position(x + 1, y);
-			case Left:
 				return new Position(x, y - 1);
-			case Right:
+			case Down:
 				return new Position(x, y + 1);
+			case Left:
+				return new Position(x - 1, y);
+			case Right:
+				return new Position(x + 1, y);
 		}
 		return null;
 	}
