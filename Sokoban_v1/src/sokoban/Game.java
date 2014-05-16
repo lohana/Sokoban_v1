@@ -2,7 +2,6 @@ package sokoban;
 
 import java.util.ArrayList;
 
-
 public class Game implements IArrowKeyListener{
 	
 	private Player player;

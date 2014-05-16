@@ -71,7 +71,6 @@ public class SokobanDrawer implements KeyListener{
 				this.window.getContentPane().add(label);
 			}
 		}
-
     	
 		this.window.setVisible(true);
     }
