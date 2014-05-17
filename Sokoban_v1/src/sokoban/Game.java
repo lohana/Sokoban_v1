@@ -1,6 +1,6 @@
 package sokoban;
 
-import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class Game implements IArrowKeyListener{
 	
@@ -22,9 +22,9 @@ public class Game implements IArrowKeyListener{
 				switch(boardStore.charAt(i * cols + j)) {
 					case 'w': figure = new Wall(position); break;
 					case 'b': figure = new Box(position, false); break;
-					case 'a': figure = new Box(position, true); break;
+					case 'a': figure = new Box(position, true); board.addFinal(position); break;
 					case 'f': figure = new Field(position, false); break;
-					case 'v': figure = new Field(position, true); break;
+					case 'v': figure = new Field(position, true); board.addFinal(position); break;
 					case 'p': this.player = new Player(position); figure = player; break;
 				}
 				board.setFigure(figure);
@@ -46,23 +46,20 @@ public class Game implements IArrowKeyListener{
 	public void arrowPressed(Directions direction) {
 		player.move(direction);
 		board.draw();
+		if (isGameEnd()) {
+			JOptionPane.showMessageDialog(null, "You win!");
+		}
 	}
 	
+	// Checks if the game is over.
 	private boolean isGameEnd(){
-		Collision collision = Collision.getInstance();
-		Board currentBoard = collision.getBoard();
-		ArrayList<Position> finalPositions = currentBoard.getFinalPositions();
-		int finalsBox = 0;
-		for (int i=0; i<=finalPositions.size();i++){
-			Position currentPosition = finalPositions.get(i);
-			Figure currentFigure = currentBoard.getFigure(currentPosition);
-			if (currentFigure instanceof Box)
-				finalsBox++;
+		for (Position position : board.getFinalPositions()) {
+			Figure currentFigure = board.getFigure(position);
+			if (!(currentFigure instanceof Box)) {
+				return false;
+			}
 		}
 
-		if (finalsBox == finalPositions.size())
-			return true;
-		else
-			return false;
+		return true;
 	}
 }

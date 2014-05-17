@@ -35,13 +35,20 @@ public class Box extends Figure {
 		Position nextPosition = this.position.getNextPosition(direction);
 		Position oldPosition = this.position;
 		this.position = nextPosition;
+		
 		Collision collision = Collision.getInstance();
-		Board board = collision.getBoard();
+		
+		// If the new position is final, make the box final
+		if (collision.isPositionFinal(position)) {
+			this.isFinal = true;
+		} else {
+			this.isFinal = false;
+		}
 		
 		// If the current position is final restore a final field.
 		boolean isFinal = collision.isPositionFinal(oldPosition);
-		board.setFigure(new Field(oldPosition, isFinal));
-		board.setFigure(this);
+		collision.setFigure(new Field(oldPosition, isFinal));
+		collision.setFigure(this);
 	}
 
 }

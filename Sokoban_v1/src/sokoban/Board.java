@@ -31,14 +31,12 @@ public class Board extends Figure{
 		return figures[position.getX()][position.getY()];
 	}
 
-
 	public void setFigure(Figure figure){
-		if (figure instanceof Field){
-			if ( ((Field) figure).isFinal() ) 
-				finalPositions.add(figure.getPosition());
-		}
-
 		figures[figure.position.getX()][figure.position.getY()] = figure;
+	}
+	
+	public void addFinal(Position position) {
+		finalPositions.add(position);
 	}
 	
 	public ArrayList<Position> getFinalPositions(){

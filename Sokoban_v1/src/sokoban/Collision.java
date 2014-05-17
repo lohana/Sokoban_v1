@@ -19,20 +19,19 @@ public class Collision {
 	public void setBoard(Board board){
 		this.board = board;
 	}
-
-	public Board getBoard(){
-		return board;
-	}
 	
 	public boolean isPositionFinal(Position position) {
 		for (Position p : board.getFinalPositions()) {
-			if (p.equals(position)) {
+			if (p.isEqualTo(position)) {
 				return true;
 			}
 		}
 		return false;
 	}
 	
+	public void setFigure(Figure figure) {
+		board.setFigure(figure);
+	}
 
 	// Checks if the player can move in the specified direction
 	public Figure collision(Player player, Directions direction) {

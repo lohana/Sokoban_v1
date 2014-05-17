@@ -11,7 +11,12 @@ public class Main {
 	// b - box
 	// a - final box
 	// p - player
-	public static String BoardStore = "wwwwwwwpffvwwffbfwwffffwwfbfvwwwwwww";
+	public static String BoardStore = "wwwwww" + 
+									  "wpffvw" +
+									  "wffbfw" + 
+									  "wffffw" + 
+									  "wfbvfw" + 
+									  "wwwwww";
 	
 	
 	public static void main(String args[])
